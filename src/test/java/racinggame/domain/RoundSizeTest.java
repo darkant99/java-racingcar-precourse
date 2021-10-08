@@ -4,14 +4,37 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.ThreadTestUtils;
+import racinggame.exception.InvalidRoundSizeException;
 
 import java.util.concurrent.CountDownLatch;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class RoundSizeTest {
     private static final int THREAD_SAFETY_TEST_SIZE = 50000;
+
+    @ValueSource(ints = {
+            0, 10, 100
+    })
+    @DisplayName("정상 생성 테스트")
+    @ParameterizedTest
+    public void ctorTest(int size) {
+        assertDoesNotThrow(() -> new RoundSize(size));
+    }
+
+    @ValueSource(ints = {
+            -1, -10, -100
+    })
+    @DisplayName("음수 유효성 검사 테스트")
+    @ParameterizedTest
+    public void ctorInvalidNegativeTest(int size) {
+        assertThatThrownBy(() -> new RoundSize(size))
+                .isInstanceOf(InvalidRoundSizeException.class);
+    }
 
     @CsvSource({
             "0,0,true",
