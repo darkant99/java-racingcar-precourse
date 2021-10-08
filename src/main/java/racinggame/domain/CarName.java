@@ -2,6 +2,8 @@ package racinggame.domain;
 
 import racinggame.exception.InvalidCarNameException;
 
+import java.util.Objects;
+
 import static racinggame.exception.ErrorMessage.CAR_NAME_EMPTY;
 import static racinggame.exception.ErrorMessage.CAR_NAME_IS_MAX_LENGTH_OVER;
 
@@ -22,5 +24,22 @@ public class CarName {
         if (nameForValidate.length() > 5) {
             throw new InvalidCarNameException(CAR_NAME_IS_MAX_LENGTH_OVER);
         }
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final CarName carName = (CarName) o;
+        return Objects.equals(name, carName.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

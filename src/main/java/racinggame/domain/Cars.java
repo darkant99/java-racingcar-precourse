@@ -1,8 +1,14 @@
 package racinggame.domain;
 
+import racinggame.exception.ErrorMessage;
+import racinggame.exception.InvalidCarNameException;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import static racinggame.exception.ErrorMessage.*;
 
 public class Cars {
     private static final String NAME_DELIMITER = ",";
@@ -10,7 +16,15 @@ public class Cars {
     private final List<Car> cars;
 
     private Cars(final List<Car> cars) {
+        validateDuplicate(cars);
+
         this.cars = cars;
+    }
+
+    private void validateDuplicate(List<Car> cars) {
+        if (cars.size() != new HashSet<>(cars).size()) {
+            throw new InvalidCarNameException(CAR_NAME_DUPLICATE);
+        }
     }
 
     public static Cars of(final String names, final MoveStrategy moveStrategy) {
