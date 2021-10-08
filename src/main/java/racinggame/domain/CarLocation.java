@@ -3,9 +3,11 @@ package racinggame.domain;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
+@ThreadSafety
 public class CarLocation {
-    private static final Map<Integer, CarLocation> CACHED = new HashMap<>();
+    private static final Map<Integer, CarLocation> CACHED = new ConcurrentHashMap<>();
 
     private final int location;
 
@@ -14,24 +16,14 @@ public class CarLocation {
     }
 
     public static CarLocation of(final int location) {
-        return cachedInstance(location);
-    }
-
-    public static CarLocation zero() {
-        return of(0);
-    }
-
-    private static CarLocation cachedInstance(int location) {
         if (!CACHED.containsKey(location)) {
-            registerCache(location);
+            CACHED.put(location, new CarLocation(location));
         }
         return CACHED.get(location);
     }
 
-    private static synchronized void registerCache(int location) {
-        if (!CACHED.containsKey(location)) {
-            CACHED.put(location, new CarLocation(location));
-        }
+    public static CarLocation zero() {
+        return of(0);
     }
 
     public CarLocation move(int location) {

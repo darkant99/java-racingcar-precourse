@@ -3,6 +3,7 @@ package racinggame;
 import racinggame.domain.Cars;
 import racinggame.domain.RacingGameObserver;
 import racinggame.domain.RacingGameObservers;
+import racinggame.domain.RoundSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +21,11 @@ public class RacingGame {
         observers.register(observer);
     }
 
-    public void start(final int roundSize) {
-        for (int roundCounter = 0; roundCounter < roundSize; roundCounter++) {
+    public void start(final RoundSize roundSize) {
+        while (!roundSize.isCompleted()) {
             runningRound();
+
+            roundSize.doneRound();
         }
     }
 
