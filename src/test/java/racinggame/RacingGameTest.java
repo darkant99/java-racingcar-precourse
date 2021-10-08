@@ -24,10 +24,9 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(
                 Cars.of(names, new FakeMoveStrategy(ROUND_MOVE_LOCATION))
         );
-        game.addObserver(observer);
+        game.registerObserver(observer);
 
         game.start(roundSize);
-
         assertThat(
                 observer.matchRoundCounter(roundSize)
         ).isTrue();
