@@ -1,18 +1,31 @@
 package racinggame.domain;
 
-import java.util.HashMap;
+import racinggame.exception.InvalidCarLocationException;
+
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static racinggame.exception.ErrorMessage.CAR_LOCATION_NEGATIVE;
+
 @ThreadSafety
 public class CarLocation {
+    private static final int MIN_LOCATION = 0;
+
     private static final Map<Integer, CarLocation> CACHED = new ConcurrentHashMap<>();
 
     private final int location;
 
     private CarLocation(final int location) {
+        validateNegativeSize(location);
+
         this.location = location;
+    }
+
+    private void validateNegativeSize(int size) {
+        if (size < MIN_LOCATION) {
+            throw new InvalidCarLocationException(CAR_LOCATION_NEGATIVE);
+        }
     }
 
     public static CarLocation of(final int location) {
