@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.domain.Cars;
 import racinggame.domain.FakeMoveStrategy;
 import racinggame.domain.FakeRacingGameObserver;
+import racinggame.domain.RoundSize;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,7 +27,7 @@ public class RacingGameTest {
         );
         game.registerObserver(observer);
 
-        game.start(roundSize);
+        game.start(new RoundSize(roundSize));
         assertThat(
                 observer.matchRoundCounter(roundSize)
         ).isTrue();
