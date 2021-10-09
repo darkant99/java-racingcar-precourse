@@ -41,7 +41,17 @@ public class RacingGameController implements RacingGameObserver {
     }
 
     @Override
+    public void gameStart() {
+        outputView.printDividing();
+
+        outputView.printGameResultTitle();
+    }
+
+    @Override
     public void updateRound(final Cars cars) {
-        System.out.println("라운드 완료");
+        for(Car iCar : cars) {
+            outputView.printCarLocation(iCar.name(), iCar.location());
+        }
+        outputView.printDividing();
     }
 }

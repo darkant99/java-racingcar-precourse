@@ -15,6 +15,14 @@ public class Car {
         this.location = CarLocation.zero();
     }
 
+    public CarName name() {
+        return name;
+    }
+
+    public CarLocation location() {
+        return location;
+    }
+
     public CarLocation move() {
         location = moveStrategy.move(location);
         return location;

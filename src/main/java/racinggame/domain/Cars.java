@@ -1,16 +1,12 @@
 package racinggame.domain;
 
-import racinggame.exception.ErrorMessage;
 import racinggame.exception.InvalidCarNameException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
-import static racinggame.exception.ErrorMessage.*;
+import static racinggame.exception.ErrorMessage.CAR_NAME_DUPLICATE;
 
-public class Cars {
+public class Cars implements Iterable<Car> {
     private static final String NAME_DELIMITER = ",";
 
     private final List<Car> cars;
@@ -44,5 +40,10 @@ public class Cars {
 
     public void move() {
         cars.forEach(Car::move);
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return cars.iterator();
     }
 }

@@ -43,6 +43,10 @@ public class CarLocation {
         return of(this.location + location);
     }
 
+    public int value() {
+        return location;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

@@ -14,6 +14,12 @@ public class RacingGameObservers {
         this.observers.add(observer);
     }
 
+    public void gameStart() {
+        for (RacingGameObserver iObserver : observers) {
+            iObserver.gameStart();
+        }
+    }
+
     public void updateRound(Cars cars) {
         for (RacingGameObserver iObserver : observers) {
             iObserver.updateRound(cars);
