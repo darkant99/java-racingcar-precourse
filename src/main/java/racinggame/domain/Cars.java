@@ -42,8 +42,17 @@ public class Cars implements Iterable<Car> {
         cars.forEach(Car::move);
     }
 
+    public Cars winners() {
+        return null;
+    }
+
+    public int size() {
+        return cars.size();
+    }
+
     @Override
     public Iterator<Car> iterator() {
         return cars.iterator();
     }
+
 }

@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.exception.InvalidCarNameException;
 
@@ -47,5 +48,21 @@ public class CarsTest {
                     iCar.matchLocation(CarLocation.of(1))
             ).isTrue();
         }
+    }
+
+    @CsvSource(value = {
+            "pobi,honux",
+            "pobi,crong,honux",
+            "pobi,crong,honux,jaewon",
+    }, delimiter = '=')
+    @ParameterizedTest
+    void winnersTest(String names) {
+        Cars cars = Cars.of(names, new UnfairEvenCarMoveStrategy(1));
+        cars.move();
+
+        int evenCarSize = cars.size() / 2;
+        assertThat(
+                cars.winners().size()
+        ).isEqualTo(evenCarSize);
     }
 }
