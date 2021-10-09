@@ -19,7 +19,7 @@ public class RoundSize {
     }
 
     private void validateNegativeSize(int size) {
-        if (size < END_SIZE) {
+        if (size <= END_SIZE) {
             throw new InvalidRoundSizeException(ROUND_SIZE_NEGATIVE);
         }
     }

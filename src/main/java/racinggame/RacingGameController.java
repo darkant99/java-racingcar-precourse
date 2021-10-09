@@ -16,22 +16,28 @@ public class RacingGameController implements RacingGameObserver {
     }
 
     public void run() {
-        RacingGame game = new RacingGame(inputCars());
+        RacingGame game = new RacingGame(newCars());
         game.registerObserver(this);
 
-        game.start(inputRoundSize());
+        game.start(newRoundSize());
     }
 
-    private RoundSize inputRoundSize() {
-        return new RoundSize(
-                inputView.inputRoundSize()
-        );
+    private RoundSize newRoundSize() {
+        try {
+            return new RoundSize(inputView.inputRoundSize());
+        } catch (IllegalArgumentException e) {
+            outputView.printException(e);
+            return newRoundSize();
+        }
     }
 
-    private Cars inputCars() {
-        return Cars.of(
-                inputView.inputCarNames(), MOVE_ROLE
-        );
+    private Cars newCars() {
+        try {
+            return Cars.of(inputView.inputCarNames(), MOVE_ROLE);
+        } catch (IllegalArgumentException e) {
+            outputView.printException(e);
+            return newCars();
+        }
     }
 
     @Override
