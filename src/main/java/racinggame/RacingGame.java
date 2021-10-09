@@ -23,9 +23,10 @@ public class RacingGame {
 
         while (!roundSize.isCompleted()) {
             runningRound();
-
             roundSize.doneRound();
         }
+
+        observers.gameEnd(cars);
     }
 
     private void runningRound() {

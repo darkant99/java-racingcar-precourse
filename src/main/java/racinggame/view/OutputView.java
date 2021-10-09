@@ -2,6 +2,7 @@ package racinggame.view;
 
 import racinggame.domain.CarLocation;
 import racinggame.domain.CarName;
+import racinggame.domain.Cars;
 
 public interface OutputView {
     void printDividing();
@@ -11,4 +12,6 @@ public interface OutputView {
     void printGameResultTitle();
 
     void printCarLocation(CarName carName, CarLocation location);
+
+    void printWinners(Cars winners);
 }

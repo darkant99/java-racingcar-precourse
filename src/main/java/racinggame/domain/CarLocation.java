@@ -47,6 +47,10 @@ public class CarLocation {
         return location;
     }
 
+    public int compare(CarLocation that) {
+        return Integer.compare(this.location, that.location);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

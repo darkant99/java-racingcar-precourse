@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 class RoundSizeTest {
     @ValueSource(ints = {
-            0, 10, 100
+            1, 10, 100
     })
     @DisplayName("정상 생성 테스트")
     @ParameterizedTest
@@ -21,9 +21,9 @@ class RoundSizeTest {
     }
 
     @ValueSource(ints = {
-            -1, -10, -100
+            0, -1, -10, -100
     })
-    @DisplayName("음수 유효성 검사 테스트")
+    @DisplayName("제로, 음수 유효성 검사 테스트")
     @ParameterizedTest
     public void ctorInvalidNegativeTest(int size) {
         assertThatThrownBy(() -> new RoundSize(size))
@@ -31,8 +31,8 @@ class RoundSizeTest {
     }
 
     @CsvSource({
-            "0,0,true",
-            "0,1,true",
+            "1,1,true",
+            "2,1,false",
             "10,5,false"
     })
     @DisplayName("doneRound 호출시 남은 라운드 값을 1회 차감한다.")
@@ -48,7 +48,7 @@ class RoundSizeTest {
     }
 
     @ValueSource(ints = {
-            0, 10, 100
+            1, 10, 100
     })
     @DisplayName("RoundSize 객체는 스레드 안전하지 못한다.")
     @ParameterizedTest

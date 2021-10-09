@@ -45,22 +45,22 @@ public class CarsTest {
 
         for (Car iCar : cars) {
             assertThat(
-                    iCar.matchLocation(CarLocation.of(1))
-            ).isTrue();
+                    iCar.compareLocation(CarLocation.of(1))
+            ).isEqualTo(0);
         }
     }
 
     @CsvSource(value = {
             "pobi,honux",
             "pobi,crong,honux",
-            "pobi,crong,honux,jaewon",
+            "pobi,crong,honux,jaewo",
     }, delimiter = '=')
     @ParameterizedTest
     void winnersTest(String names) {
         Cars cars = Cars.of(names, new UnfairEvenCarMoveStrategy(1));
         cars.move();
 
-        int evenCarSize = cars.size() / 2;
+        int evenCarSize = cars.size() / 2 + cars.size() % 2;
         assertThat(
                 cars.winners().size()
         ).isEqualTo(evenCarSize);

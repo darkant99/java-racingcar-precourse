@@ -1,14 +1,8 @@
 package racinggame.view;
 
-import java.util.Scanner;
+import nextstep.utils.Console;
 
 public class ConsoleInputView implements InputView {
-    private final Scanner scanner;
-
-    public ConsoleInputView() {
-        this.scanner = new Scanner(System.in);
-    }
-
     @Override
     public String inputCarNames() {
         return nextLine(Text.INPUT_CAR_NAMES);
@@ -22,7 +16,7 @@ public class ConsoleInputView implements InputView {
     private String nextLine(Text guideText) {
         System.out.println(guideText.text);
 
-        return scanner.nextLine();
+        return Console.readLine();
     }
 
     private int nextLineAsInt(Text guideText) {

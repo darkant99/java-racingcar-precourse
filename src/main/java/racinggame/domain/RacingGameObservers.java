@@ -15,8 +15,12 @@ public class RacingGameObservers {
     }
 
     public void gameStart() {
+        observers.forEach(RacingGameObserver::gameStart);
+    }
+
+    public void gameEnd(Cars cars) {
         for (RacingGameObserver iObserver : observers) {
-            iObserver.gameStart();
+            iObserver.gameEnd(cars);
         }
     }
 

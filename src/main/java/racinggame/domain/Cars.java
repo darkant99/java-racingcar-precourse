@@ -43,7 +43,24 @@ public class Cars implements Iterable<Car> {
     }
 
     public Cars winners() {
-        return null;
+        List<Car> winners = new ArrayList<>();
+
+        Car oneOfWinners = Collections.max(cars, this::compareCarLocation);
+        for (Car iCar : cars) {
+            carLocationFilter(winners, oneOfWinners, iCar);
+        }
+        return new Cars(winners);
+    }
+
+    private int compareCarLocation(Car thisCar, Car thatCar) {
+        return thisCar.compareLocation(thatCar);
+    }
+
+    private void carLocationFilter(List<Car> winners, Car oneOfWinners, Car currentCar) {
+        // 현재 우승 자동차와 비교해 우승자와 위치값이 같다면 winners 리스트에 포함한다.
+        if (oneOfWinners.compareLocation(currentCar) == 0) {
+            winners.add(currentCar);
+        }
     }
 
     public int size() {
@@ -54,5 +71,4 @@ public class Cars implements Iterable<Car> {
     public Iterator<Car> iterator() {
         return cars.iterator();
     }
-
 }

@@ -28,8 +28,12 @@ public class Car {
         return location;
     }
 
-    public boolean matchLocation(CarLocation location) {
-        return this.location.equals(location);
+    public int compareLocation(CarLocation thatLocation) {
+        return location.compare(thatLocation);
+    }
+
+    public int compareLocation(Car that) {
+        return compareLocation(that.location);
     }
 
     @Override
