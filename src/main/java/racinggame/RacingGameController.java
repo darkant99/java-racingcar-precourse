@@ -1,6 +1,9 @@
 package racinggame;
 
 import racinggame.domain.*;
+import racinggame.movestrategy.MoveStrategy;
+import racinggame.movestrategy.RandomMoveStrategy;
+import racinggame.observer.RacingGameObserver;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
 

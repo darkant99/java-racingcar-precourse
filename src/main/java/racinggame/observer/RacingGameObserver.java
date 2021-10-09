@@ -1,4 +1,6 @@
-package racinggame.domain;
+package racinggame.observer;
+
+import racinggame.domain.Cars;
 
 public interface RacingGameObserver {
     void gameStart();

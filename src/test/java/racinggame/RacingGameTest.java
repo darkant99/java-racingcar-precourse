@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.domain.*;
+import racinggame.movestrategy.AlwaysMoveStrategy;
+import racinggame.observer.FakeRacingGameObserver;
+import racinggame.observer.RacingGameObserver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

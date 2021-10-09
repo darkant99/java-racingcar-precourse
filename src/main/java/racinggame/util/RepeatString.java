@@ -1,4 +1,4 @@
-package racinggame;
+package racinggame.util;
 
 public class RepeatString {
     private final String unit;

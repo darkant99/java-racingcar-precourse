@@ -1,6 +1,8 @@
-package racinggame.domain;
+package racinggame.movestrategy;
 
-public class AlwaysMoveStrategy implements MoveStrategy  {
+import racinggame.domain.CarLocation;
+
+public class AlwaysMoveStrategy implements MoveStrategy {
     private final int moveLocation;
 
     public AlwaysMoveStrategy(final int moveLocation) {

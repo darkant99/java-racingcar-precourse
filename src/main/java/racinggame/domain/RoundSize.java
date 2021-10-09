@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import racinggame.annotation.ThreadNotSafety;
 import racinggame.exception.InvalidRoundSizeException;
 
 import java.util.Objects;

@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import racinggame.movestrategy.MoveStrategy;
 import racinggame.exception.InvalidCarNameException;
 
 import java.util.*;

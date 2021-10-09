@@ -1,6 +1,7 @@
-package racinggame.domain;
+package racinggame.movestrategy;
 
 import nextstep.utils.Randoms;
+import racinggame.domain.CarLocation;
 
 public class RandomMoveStrategy implements MoveStrategy {
     private static final int MOVE_LOCATION_VALUE = 1;

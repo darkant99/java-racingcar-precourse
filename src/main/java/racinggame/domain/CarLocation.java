@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import racinggame.annotation.ThreadSafety;
 import racinggame.exception.InvalidCarLocationException;
 
 import java.util.Map;

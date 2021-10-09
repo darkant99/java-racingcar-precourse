@@ -1,8 +1,8 @@
 package racinggame;
 
 import racinggame.domain.Cars;
-import racinggame.domain.RacingGameObserver;
-import racinggame.domain.RacingGameObservers;
+import racinggame.observer.RacingGameObserver;
+import racinggame.observer.RacingGameObservers;
 import racinggame.domain.RoundSize;
 
 public class RacingGame {

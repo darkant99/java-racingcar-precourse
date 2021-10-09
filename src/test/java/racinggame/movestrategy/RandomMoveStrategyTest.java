@@ -1,9 +1,9 @@
-package racinggame.domain;
+package racinggame.movestrategy;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.domain.CarLocation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

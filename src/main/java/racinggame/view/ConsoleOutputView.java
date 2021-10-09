@@ -1,6 +1,6 @@
 package racinggame.view;
 
-import racinggame.RepeatString;
+import racinggame.util.RepeatString;
 import racinggame.domain.CarLocation;
 import racinggame.domain.CarName;
 import racinggame.domain.Cars;

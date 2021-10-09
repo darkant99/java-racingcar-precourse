@@ -1,4 +1,6 @@
-package racinggame.domain;
+package racinggame.movestrategy;
+
+import racinggame.domain.CarLocation;
 
 // 짝수 순번의 자동차만 움직일 수 있는 이동 전략
 public class UnfairEvenCarMoveStrategy implements MoveStrategy {

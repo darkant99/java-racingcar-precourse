@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import racinggame.movestrategy.MoveStrategy;
+
 import java.util.Objects;
 
 public class Car {

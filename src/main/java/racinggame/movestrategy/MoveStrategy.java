@@ -1,4 +1,6 @@
-package racinggame.domain;
+package racinggame.movestrategy;
+
+import racinggame.domain.CarLocation;
 
 @FunctionalInterface
 public interface MoveStrategy {
