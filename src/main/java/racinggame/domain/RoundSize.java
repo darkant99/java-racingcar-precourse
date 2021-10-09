@@ -1,11 +1,10 @@
 package racinggame.domain;
 
-import racinggame.exception.ErrorMessage;
 import racinggame.exception.InvalidRoundSizeException;
 
 import java.util.Objects;
 
-import static racinggame.exception.ErrorMessage.*;
+import static racinggame.exception.ErrorMessage.ROUND_SIZE_NEGATIVE;
 
 @ThreadNotSafety
 public class RoundSize {
