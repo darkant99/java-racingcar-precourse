@@ -27,7 +27,7 @@ public class Car {
 
     public CarLocation move() {
         location = moveStrategy.move(location);
-        return location;
+        return location();
     }
 
     public int compareLocation(CarLocation thatLocation) {

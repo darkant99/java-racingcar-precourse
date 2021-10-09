@@ -57,7 +57,7 @@ public class RacingGameController implements RacingGameObserver {
 
     @Override
     public void updateRound(final Cars cars) {
-        for(Car iCar : cars) {
+        for (Car iCar : cars) {
             outputView.printCarLocation(iCar.name(), iCar.location());
         }
         outputView.printDividing();
