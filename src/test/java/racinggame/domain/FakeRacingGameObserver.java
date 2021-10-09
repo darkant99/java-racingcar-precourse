@@ -12,6 +12,11 @@ public class FakeRacingGameObserver implements RacingGameObserver {
     }
 
     @Override
+    public void gameStart() {
+        roundCounter = 0;
+    }
+
+    @Override
     public void updateRound(final Cars cars) {
         ++roundCounter;
     }

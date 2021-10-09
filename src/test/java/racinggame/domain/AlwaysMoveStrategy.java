@@ -1,9 +1,9 @@
 package racinggame.domain;
 
-public class FakeMoveStrategy implements MoveStrategy  {
+public class AlwaysMoveStrategy implements MoveStrategy  {
     private final int moveLocation;
 
-    public FakeMoveStrategy(final int moveLocation) {
+    public AlwaysMoveStrategy(final int moveLocation) {
         this.moveLocation = moveLocation;
     }
 

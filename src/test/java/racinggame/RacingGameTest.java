@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.domain.Cars;
-import racinggame.domain.FakeMoveStrategy;
+import racinggame.domain.AlwaysMoveStrategy;
 import racinggame.domain.FakeRacingGameObserver;
 import racinggame.domain.RoundSize;
 
@@ -23,7 +23,7 @@ public class RacingGameTest {
         FakeRacingGameObserver observer = new FakeRacingGameObserver();
 
         RacingGame game = new RacingGame(
-                Cars.of(names, new FakeMoveStrategy(ROUND_MOVE_LOCATION))
+                Cars.of(names, new AlwaysMoveStrategy(ROUND_MOVE_LOCATION))
         );
         game.registerObserver(observer);
 

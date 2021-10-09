@@ -28,6 +28,10 @@ public class Car {
         return location;
     }
 
+    public boolean matchLocation(CarLocation location) {
+        return this.location.equals(location);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

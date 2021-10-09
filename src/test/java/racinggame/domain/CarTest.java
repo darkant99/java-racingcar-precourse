@@ -15,7 +15,7 @@ class CarTest {
     void moveTest(int moveLocation) {
         Car car = new Car(
                 new CarName("테스트카"),
-                new FakeMoveStrategy(moveLocation)
+                new AlwaysMoveStrategy(moveLocation)
         );
 
         assertThat(car.move())

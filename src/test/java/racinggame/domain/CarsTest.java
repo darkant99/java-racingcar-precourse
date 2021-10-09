@@ -17,7 +17,7 @@ public class CarsTest {
     @DisplayName("of 테스트 - 쉼표(,)로 구분되는 자동차 이름과 MoveStrategy를 Cars 객체로 변환한다.")
     @ParameterizedTest
     void ofTest(String names) {
-        assertDoesNotThrow(() -> Cars.of(names, new FakeMoveStrategy(0)));
+        assertDoesNotThrow(() -> Cars.of(names, new AlwaysMoveStrategy(0)));
     }
 
     @ValueSource(strings = {
@@ -28,7 +28,24 @@ public class CarsTest {
     @DisplayName("of 테스트 - 각 자동차의 이름은 중복되지 않아야 한다.")
     @ParameterizedTest
     void ofInvalidCarNameExceptionTest(String names) {
-        assertThatThrownBy(() -> Cars.of(names, new FakeMoveStrategy(0)))
+        assertThatThrownBy(() -> Cars.of(names, new AlwaysMoveStrategy(0)))
                 .isInstanceOf(InvalidCarNameException.class);
+    }
+
+    @ValueSource(strings = {
+            "pobi",
+            "pobi,honux",
+            "pobi,crong,honux"
+    })
+    @ParameterizedTest
+    void moveTest(String names) {
+        Cars cars = Cars.of(names, new AlwaysMoveStrategy(1));
+        cars.move();
+
+        for (Car iCar : cars) {
+            assertThat(
+                    iCar.matchLocation(CarLocation.of(1))
+            ).isTrue();
+        }
     }
 }
