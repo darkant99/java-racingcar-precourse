@@ -1,7 +1,6 @@
 package racinggame.view;
 
 import racinggame.RepeatString;
-import racinggame.domain.Car;
 import racinggame.domain.CarLocation;
 import racinggame.domain.CarName;
 import racinggame.domain.Cars;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class ConsoleOutputView implements OutputView {
     private final RepeatString CAR_LOCATION_REPEAT_STRING = new RepeatString("-");
