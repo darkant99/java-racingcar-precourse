@@ -1,8 +1,8 @@
 package racinggame.view;
 
-import racinggame.domain.CarLocation;
-import racinggame.domain.CarName;
-import racinggame.domain.Cars;
+import racinggame.dto.CarDto;
+
+import java.util.List;
 
 public interface OutputView {
     void printDividing();
@@ -11,7 +11,7 @@ public interface OutputView {
 
     void printGameResultTitle();
 
-    void printCarLocation(CarName carName, CarLocation location);
+    void printCarLocation(CarDto car);
 
-    void printWinners(Cars winners);
+    void printWinners(List<CarDto> winners);
 }

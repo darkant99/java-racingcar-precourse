@@ -1,6 +1,8 @@
 package racinggame;
 
-import racinggame.domain.*;
+import racinggame.domain.Car;
+import racinggame.domain.Cars;
+import racinggame.domain.RoundSize;
 import racinggame.movestrategy.MoveStrategy;
 import racinggame.movestrategy.RandomMoveStrategy;
 import racinggame.observer.RacingGameObserver;
@@ -52,13 +54,15 @@ public class RacingGameController implements RacingGameObserver {
 
     @Override
     public void gameEnd(final Cars cars) {
-        outputView.printWinners(cars.winners());
+        outputView.printWinners(
+                cars.winners().toDtos()
+        );
     }
 
     @Override
     public void updateRound(final Cars cars) {
         for (Car iCar : cars) {
-            outputView.printCarLocation(iCar.name(), iCar.location());
+            outputView.printCarLocation(iCar.toDto());
         }
         outputView.printDividing();
     }

@@ -22,4 +22,35 @@ class CarTest {
         assertThat(car.move())
                 .isEqualTo(CarLocation.of(moveLocation));
     }
+
+    @ValueSource(strings = {
+            "테스트카", "pobi", "honux"
+    })
+    @DisplayName("Car Dto 생성 테스트")
+    @ParameterizedTest
+    void toDtoNameTest(String carName) {
+        Car car = new Car(
+                new CarName(carName),
+                null
+        );
+
+        assertThat(car.toDto().getName())
+                .isEqualTo(carName);
+    }
+
+    @ValueSource(ints = {
+            1, 10, 100
+    })
+    @DisplayName("Car Dto 생성 테스트")
+    @ParameterizedTest
+    void toDtoLocationTest(int moveLocation) {
+        Car car = new Car(
+                new CarName("테스트카"),
+                new AlwaysMoveStrategy(moveLocation)
+        );
+        car.move();
+
+        assertThat(car.toDto().getLocation())
+                .isEqualTo(moveLocation);
+    }
 }

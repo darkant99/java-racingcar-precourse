@@ -1,5 +1,6 @@
 package racinggame.domain;
 
+import racinggame.dto.CarDto;
 import racinggame.movestrategy.MoveStrategy;
 
 import java.util.Objects;
@@ -17,17 +18,9 @@ public class Car {
         this.location = CarLocation.zero();
     }
 
-    public CarName name() {
-        return name;
-    }
-
-    public CarLocation location() {
-        return location;
-    }
-
     public CarLocation move() {
         location = moveStrategy.move(location);
-        return location();
+        return location;
     }
 
     public int compareLocation(CarLocation thatLocation) {
@@ -36,6 +29,10 @@ public class Car {
 
     public int compareLocation(Car that) {
         return compareLocation(that.location);
+    }
+
+    public CarDto toDto() {
+        return new CarDto(name.value(), location.value());
     }
 
     @Override

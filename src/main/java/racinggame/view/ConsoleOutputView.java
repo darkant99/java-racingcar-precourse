@@ -1,12 +1,9 @@
 package racinggame.view;
 
+import racinggame.dto.CarDto;
 import racinggame.util.RepeatString;
-import racinggame.domain.CarLocation;
-import racinggame.domain.CarName;
-import racinggame.domain.Cars;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -34,30 +31,30 @@ public class ConsoleOutputView implements OutputView {
     }
 
     @Override
-    public void printCarLocation(final CarName carName, final CarLocation location) {
+    public void printCarLocation(final CarDto car) {
         System.out.println(
                 Format.CAR_LOCATION.format(
-                        carName.value(),
-                        CAR_LOCATION_REPEAT_STRING.repeat(location.value())
+                        car.getName(),
+                        CAR_LOCATION_REPEAT_STRING.repeat(car.getLocation())
                 )
         );
     }
 
     @Override
-    public void printWinners(final Cars winners) {
+    public void printWinners(final List<CarDto> winners) {
         String winnerNamesText = makeJoinedText(
                 CAR_NAMES_DELIMITER,
-                winners.iterator(),
-                iCar -> iCar.name().value()
+                winners,
+                CarDto::getName
         );
         System.out.println(
                 Format.WINNERS.format(winnerNamesText)
         );
     }
 
-    private <T> String makeJoinedText(String delimiter, Iterator<T> objs, Function<T, String> getTextFunc) {
+    private <T> String makeJoinedText(String delimiter, List<T> objs, Function<T, String> getTextFunc) {
         List<String> texts = new ArrayList<>();
-        objs.forEachRemaining(
+        objs.forEach(
                 iObject -> texts.add(getTextFunc.apply(iObject))
         );
         return String.join(delimiter, texts);

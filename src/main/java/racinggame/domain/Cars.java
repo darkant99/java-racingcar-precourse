@@ -1,7 +1,8 @@
 package racinggame.domain;
 
-import racinggame.movestrategy.MoveStrategy;
+import racinggame.dto.CarDto;
 import racinggame.exception.InvalidCarNameException;
+import racinggame.movestrategy.MoveStrategy;
 
 import java.util.*;
 
@@ -66,6 +67,14 @@ public class Cars implements Iterable<Car> {
 
     public int size() {
         return cars.size();
+    }
+
+    public List<CarDto> toDtos() {
+        List<CarDto> dtos = new ArrayList<>();
+        for (Car iCar : cars) {
+            dtos.add(iCar.toDto());
+        }
+        return dtos;
     }
 
     @Override
